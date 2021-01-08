@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class User(AbstractUser):
     username = models.CharField(max_length=250,blank=True, null=True,unique=True)
     email = models.EmailField(_('email address'), unique=True)
-    password2 = models.CharField(max_length=250, default=None)
+    password2 = models.CharField(max_length=250, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username','first_name', 'last_name']
