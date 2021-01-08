@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phonenumber_field',
     'rest_framework',
+    'rest_framework.authtoken', # Add this line
+    'rest_auth',                # Add this line
     'userapi',
     'classapi',
 

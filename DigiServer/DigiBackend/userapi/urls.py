@@ -7,5 +7,5 @@ router.register('register', views.UserViewSet, basename= 'userapi')
 
 urlpatterns = [
     path('', include(router.urls)),
-    #path('register/', UserViewSet,)
+    path('auth/', include('rest_auth.urls')),
 ]
