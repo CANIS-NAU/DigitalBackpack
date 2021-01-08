@@ -4,6 +4,7 @@ from . import views
 
 router = DefaultRouter()
 router.register('register', views.UserViewSet, basename= 'userapi')
+router.register('changepassword', views.ChangePasswordViewSet, basename= 'password')
 
 urlpatterns = [
     path('', include(router.urls)),

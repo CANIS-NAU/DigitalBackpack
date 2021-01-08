@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import User, UserProfile
+from django.contrib.auth.password_validation import validate_password
+
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -49,5 +51,29 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         profile.address = profile_data.get('address', profile.address)
         profile.subject = profile_data.get('country', profile.subject)
         profile.save()
+
+        return instance
+
+
+
+
+class ChangePasswordSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(required=True, validators=[validate_password],label='New Password',style={'input_type': 'password'})
+    password2 = serializers.CharField(required=True,label='Confirm Password',style={'input_type': 'password'})
+
+    class Meta:
+        model = User
+        fields = ('password', 'password2')
+
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password2']:
+            raise serializers.ValidationError({"password": "Password fields didn't match."})
+
+        return attrs
+
+    def update(self, instance, validated_data):
+
+        instance.set_password(validated_data['password'])
+        instance.save()
 
         return instance
