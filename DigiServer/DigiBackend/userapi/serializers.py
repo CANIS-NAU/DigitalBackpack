@@ -31,6 +31,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             user.set_password(password)
             user.save()
             UserProfile.objects.create(user=user, **profile_data)
+                    # Send email
+            # send_mail(
+            #     'DigiBackPack Account is created',
+            #     'Your intial password is ' + password + '. Please change your password',
+            #     'teacher@gmail.com',
+            #     [email],
+            #     fail_silently=False
+            # )
             
         else:
             raise serializers.ValidationError(' Password: passwords are not matched')
@@ -51,6 +59,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         profile.address = profile_data.get('address', profile.address)
         profile.subject = profile_data.get('country', profile.subject)
         profile.save()
+
 
         return instance
 
