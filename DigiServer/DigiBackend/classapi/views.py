@@ -16,8 +16,6 @@ from google.auth.transport.requests import Request
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/classroom.rosters',
 'https://www.googleapis.com/auth/classroom.courses.readonly',
-#'https://www.googleapis.com/auth/classroom.coursework.me.readonly',
-#'https://www.googleapis.com/auth/classroom.coursework.students.readonly',
 'https://www.googleapis.com/auth/classroom.announcements',
 ]
 
@@ -63,6 +61,8 @@ def course_details(final_service):
 
 @api_view(['GET','POST'])
 def get_studentclassinfo(request):
+    if request.method == 'POST':
+
     pass
 
 @api_view(['GET','POST'])
