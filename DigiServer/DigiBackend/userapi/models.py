@@ -19,6 +19,5 @@ class UserProfile(models.Model):
     roll = models.IntegerField(unique=True)
     phone = PhoneNumberField(default=None)
     address = models.CharField(max_length=255)
-    subject = models.CharField(max_length=50)
 
     REQUIRED_FIELDS = ['roll']
