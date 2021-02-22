@@ -9,7 +9,6 @@ import hashlib
 SCOPES = [
 'https://www.googleapis.com/auth/classroom.coursework.me',
 'https://www.googleapis.com/auth/classroom.coursework.students',
-#'https://www.googleapis.com/auth/classroom.rosters',
 'https://www.googleapis.com/auth/classroom.courses.readonly',
 'https://www.googleapis.com/auth/classroom.announcements',
 ]
@@ -27,8 +26,7 @@ class GoogleLogin:
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(
-                    'credentials/credentials.json', SCOPES)
+                flow = InstalledAppFlow.from_client_secrets_file('credentials/credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
             with open(f'credentials/tokens/{user}.pickle', 'wb') as token:
