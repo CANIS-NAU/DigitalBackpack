@@ -12,8 +12,31 @@ from rest_framework.decorators import api_view
 def GoogleSignup(request):
     user_id = request.user.email
     user_person = GoogleLogin()
-    log = user_person.login(user_id)
+    creds = user_person.login(user_id)
     user = {
         'username':user_id
     }
     return Response(user)
+
+@api_view('[GET'])
+def getCourse(request):
+    user_id = request.user.email
+    user_person = GoogleLogin()
+    creds = user_person.login(user_id)
+    service = build('classroom', 'v1', credentials=creds)
+    results = service.courses().list().execute()
+    courses = results.get('courses', [])
+
+    if not courses:
+        content={
+            'message':'No courses found.',
+        }
+        return Response(content)
+    else:
+        for course in courses:
+            #print(course)
+            print(course['name'])
+            print('ID: ',course['id'])
+            print('Section: ',course['section'])
+            print('Course State: ',course['courseState'])
+            #print(course['userId'])
