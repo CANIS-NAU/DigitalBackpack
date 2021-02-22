@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import User, UserProfile
 from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
+from rest_framework.response import Response
+
 
 
 
@@ -86,4 +88,5 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
         instance.set_password(validated_data['password'])
         instance.save()
 
-        return instance
+        serializer = ChangePasswordSerializer(instance)
+        return Response(serializer.data)
