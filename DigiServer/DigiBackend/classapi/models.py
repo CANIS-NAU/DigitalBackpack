@@ -44,10 +44,8 @@ from django.conf import settings
 
 
 
-# class Course(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
-#     course_name = models.CharField('Course Name', max_length=200)
-#     course_grade = models.CharField('Course Grade', max_length=100)
+class Course(models.Model):
+     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+     course_name = models.CharField('Course Name', max_length=200)
+     course_id = models.CharField('Course ID', max_length=100)
 
-#     def __str__(self):
-#         return self.user.email
