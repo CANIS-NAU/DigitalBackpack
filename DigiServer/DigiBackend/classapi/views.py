@@ -41,3 +41,27 @@ def getCourse(request):
             print('Course State: ',course['courseState'])
             #print(course['userId'])
     pass
+
+@api_view(['GET'])
+def courses(request):
+    pass
+
+@api_view(['GET'])
+def courseworks(request):
+    pass
+
+@api_view(['GET'])
+def submissions(request):
+    pass
+
+@api_view(['GET'])
+def announcements(request):
+    pass
+
+@api_view(['GET'])
+def grades(request):
+    pass
+
+@api_view(['GET','POST'])
+def upload(request):
+    pass
