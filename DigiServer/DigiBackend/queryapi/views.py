@@ -16,4 +16,9 @@ def custom_query(request,query):
     return Response(my_results_dic)
 
 
+@api_view(['GET'])
+def google_query(request,query):
+    pass
+
+
 
