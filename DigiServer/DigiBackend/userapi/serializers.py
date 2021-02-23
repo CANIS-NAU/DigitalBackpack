@@ -11,7 +11,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = UserProfile
-        fields = ('roll','phone', 'address', 'subject')
+        fields = ('roll','phone', 'address')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

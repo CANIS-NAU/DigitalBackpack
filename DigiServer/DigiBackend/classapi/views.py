@@ -18,7 +18,7 @@ def GoogleSignup(request):
     }
     return Response(user)
 
-@api_view('[GET'])
+@api_view(['GET'])
 def getCourse(request):
     user_id = request.user.email
     user_person = GoogleLogin()
@@ -40,3 +40,4 @@ def getCourse(request):
             print('Section: ',course['section'])
             print('Course State: ',course['courseState'])
             #print(course['userId'])
+    pass
